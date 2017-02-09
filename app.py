@@ -40,8 +40,10 @@ def webhook():
                     message_text = messaging_event["message"]["text"]  # the message's text
                     if message_text == "trump":
                         send_message(sender_id, "make america great again")
+                    elif message_text == "hello":
+                        send_message(sender_id, "world")
                     else:
-                        send_message(sender_id, "git it")
+                        send_message(sender_id, "got it")
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass
 
