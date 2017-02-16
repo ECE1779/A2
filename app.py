@@ -97,7 +97,7 @@ def search_image(q, offset):
         
     json_data = json.loads(data)
     print(json_data)
-    return json_data["value"][0]
+    return json_data["value"][0][0]["contentURL"]
 
 ####################################
 
