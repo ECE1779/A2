@@ -64,7 +64,7 @@ def webhook():
 ########### Bing Search ############
 ########### Python 2.7 #############
 #import http.client, urllib.request, urllib.parse, urllib.error, base64
-import httplib, urllib, base64
+import httplib, urllib, base64, json
 
 def search_image(q, offset):
 
@@ -78,7 +78,7 @@ def search_image(q, offset):
     params = urllib.urlencode({
         # Request parameters
         'q': q,
-        'count': '10',
+        'count': '1',
         'offset': offset,
         'mkt': 'en-us',
         'safeSearch': 'Strict',
@@ -89,12 +89,15 @@ def search_image(q, offset):
         conn.request("GET", "/bing/v5.0/images/search?%s" % params, "{body}", headers)
         response = conn.getresponse()
         data = response.read()
-        print(data)
+        #print(data)
+        json_data = json.loads(data.text)
+        print(json_data)
         conn.close()
     except Exception as e:
         print("[Errno {0}] {1}".format(e.errno, e.strerror))
         
-    return data["value"]["0"]["contentURL"]
+    
+    return json_data['value'][0]['contentURL']
 
 ####################################
 
