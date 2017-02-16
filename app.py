@@ -45,7 +45,7 @@ def webhook():
                     elif message_text == "hello":
                         send_message(sender_id, "world")
                     else:
-                        send_message(sender_id, message_text)
+                        send_message(sender_id, "here's your picture of "message_text)
                         result = search_image(message_text, 0)
                         send_image(sender_id, result)
                         
