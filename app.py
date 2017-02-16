@@ -63,8 +63,8 @@ def webhook():
 
 ########### Bing Search ############
 ########### Python 3.2 #############
-import http.client, urllib.request, urllib.parse, urllib.error, base64
-
+#import http.client, urllib.request, urllib.parse, urllib.error, base64
+import httplib, urllib, base64
 
 def search_image(q, offset):
 
