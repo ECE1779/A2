@@ -41,7 +41,7 @@ def webhook():
                     if message_text == "trump":
                         send_message(sender_id, "make america great again")
                         result = search_image("catfish", 0)
-                        send_message(sender_id, result)
+                        send_image(sender_id, result)
                     elif message_text == "hello":
                         send_message(sender_id, "world")
                     else:
@@ -101,6 +101,34 @@ def search_image(q, offset):
 
 ####################################
 
+
+def send_image(recipient_id, contentUrl):
+
+    log("sending message to {recipient}: {text}".format(recipient=recipient_id, text=message_text))
+
+    params = {
+        "access_token": os.environ["PAGE_ACCESS_TOKEN"]
+    }
+    headers = {
+        "Content-Type": "application/json"
+    }
+    data = json.dumps({
+        "recipient": {
+            "id": recipient_id
+        },
+        "message":{
+            "attachment":{
+            "type":"image",
+            "payload":{
+            "url":contentUrl
+      }
+    }
+  }
+    })
+    r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
+    if r.status_code != 200:
+        log(r.status_code)
+        log(r.text)
 
 
 
