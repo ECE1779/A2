@@ -95,7 +95,7 @@ def search_image(q, offset):
     except Exception as e:
         print("[Errno {0}] {1}".format(e.errno, e.strerror))
         
-    json_data = json.loads(data.text)
+    json_data = json.loads(data)
     print(json_data)
     return json_data['value'][0]['contentURL']
 
