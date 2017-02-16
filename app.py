@@ -94,7 +94,7 @@ def search_image(q, offset):
     except Exception as e:
         print("[Errno {0}] {1}".format(e.errno, e.strerror))
         
-    return data["value"][0]["contentURL"]
+    return data["value"]["0"]["contentURL"]
 
 ####################################
 
