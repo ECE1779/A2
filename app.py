@@ -69,26 +69,27 @@ import httplib, urllib, base64
 def search_image(q, offset):
 
 
+ 
     headers = {
         # Request headers
-        'Ocp-Apim-Subscription-Key': 'b23854bc1dc24ebcb32a94577b19b1c6',
+        'Ocp-Apim-Subscription-Key': '{subscription key}',
     }
 
-    params = urllib.parse.urlencode({
+    params = urllib.urlencode({
         # Request parameters
         'q': q,
-        'count': '3',
+        'count': '10',
         'offset': offset,
         'mkt': 'en-us',
         'safeSearch': 'Strict',
     })
 
     try:
-        conn = http.client.HTTPSConnection('api.cognitive.microsoft.com')
+        conn = httplib.HTTPSConnection('api.cognitive.microsoft.com')
         conn.request("GET", "/bing/v5.0/images/search?%s" % params, "{body}", headers)
         response = conn.getresponse()
         data = response.read()
-        #print(data)
+        print(data)
         conn.close()
     except Exception as e:
         print("[Errno {0}] {1}".format(e.errno, e.strerror))
