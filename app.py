@@ -62,7 +62,7 @@ def webhook():
 
 
 ########### Bing Search ############
-########### Python 3.2 #############
+########### Python 2.7 #############
 #import http.client, urllib.request, urllib.parse, urllib.error, base64
 import httplib, urllib, base64
 
@@ -94,7 +94,7 @@ def search_image(q, offset):
     except Exception as e:
         print("[Errno {0}] {1}".format(e.errno, e.strerror))
         
-    return data["value"][0][contentURL]
+    return data["value"][0]["contentURL"]
 
 ####################################
 
