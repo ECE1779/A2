@@ -72,7 +72,7 @@ def search_image(q, offset):
  
     headers = {
         # Request headers
-        'Ocp-Apim-Subscription-Key': 'b23854bc1dc24ebcb32a94577b19b1c6',
+        'Ocp-Apim-Subscription-Key': 'b23854bc1dc24ebcb32a94577b19b1c60',
     }
 
     params = urllib.urlencode({
@@ -89,7 +89,7 @@ def search_image(q, offset):
         conn.request("GET", "/bing/v5.0/images/search?%s" % params, "{body}", headers)
         response = conn.getresponse()
         data = response.read()
-        print(data)
+        #print(data)
 
         conn.close()
     except Exception as e:
