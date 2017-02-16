@@ -104,7 +104,7 @@ def search_image(q, offset):
 
 def send_image(recipient_id, contentUrl):
 
-    log("sending message to {recipient}: {text}".format(recipient=recipient_id, text=message_text))
+    log("sending message to {recipient}: {text}".format(recipient=recipient_id, text=contentUrl))
 
     params = {
         "access_token": os.environ["PAGE_ACCESS_TOKEN"]
