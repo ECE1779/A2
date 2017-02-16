@@ -72,7 +72,7 @@ def search_image(q, offset):
  
     headers = {
         # Request headers
-        'Ocp-Apim-Subscription-Key': 'b23854bc1dc24ebcb32a94577b19b1c60',
+        'Ocp-Apim-Subscription-Key': 'b23854bc1dc24ebcb32a94577b19b1c6',
     }
 
     params = urllib.urlencode({
@@ -97,7 +97,7 @@ def search_image(q, offset):
         
     json_data = json.loads(data)
     print(json_data)
-    return json_data['value'][0]['contentURL']
+    return json_data['value']['0']['contentURL']
 
 ####################################
 
