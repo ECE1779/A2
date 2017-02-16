@@ -17,7 +17,7 @@ def verify():
             return "Verification token mismatch", 403
         return request.args["hub.challenge"], 200
 
-    return "Hello world", 200
+    return "The service is up", 200
 
 
 @app.route('/', methods=['POST'])
@@ -40,6 +40,8 @@ def webhook():
                     message_text = messaging_event["message"]["text"]  # the message's text
                     if message_text == "trump":
                         send_message(sender_id, "make america great again")
+                        result = search_image("catfish", 0)
+                        send_message(sender_id, result)
                     elif message_text == "hello":
                         send_message(sender_id, "world")
                     else:
@@ -55,6 +57,47 @@ def webhook():
                     pass
 
     return "ok", 200
+
+
+
+
+########### Bing Search ############
+########### Python 3.2 #############
+import http.client, urllib.request, urllib.parse, urllib.error, base64
+
+
+def search_image(q, offset):
+
+
+    headers = {
+        # Request headers
+        'Ocp-Apim-Subscription-Key': 'b23854bc1dc24ebcb32a94577b19b1c6',
+    }
+
+    params = urllib.parse.urlencode({
+        # Request parameters
+        'q': q,
+        'count': '3',
+        'offset': offset,
+        'mkt': 'en-us',
+        'safeSearch': 'Strict',
+    })
+
+    try:
+        conn = http.client.HTTPSConnection('api.cognitive.microsoft.com')
+        conn.request("GET", "/bing/v5.0/images/search?%s" % params, "{body}", headers)
+        response = conn.getresponse()
+        data = response.read()
+        #print(data)
+        conn.close()
+    except Exception as e:
+        print("[Errno {0}] {1}".format(e.errno, e.strerror))
+        
+    return data["value"][0][contentURL]
+
+####################################
+
+
 
 
 def send_message(recipient_id, message_text):
