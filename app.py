@@ -89,14 +89,14 @@ def search_image(q, offset):
         conn.request("GET", "/bing/v5.0/images/search?%s" % params, "{body}", headers)
         response = conn.getresponse()
         data = response.read()
-        #print(data)
-        json_data = json.loads(data.text)
-        print(json_data)
+        print(data)
+
         conn.close()
     except Exception as e:
         print("[Errno {0}] {1}".format(e.errno, e.strerror))
         
-    
+    json_data = json.loads(data.text)
+    print(json_data)
     return json_data['value'][0]['contentURL']
 
 ####################################
