@@ -83,7 +83,7 @@ def search_image(q, offset):
         'count': '1',
         'offset': offset,
         'mkt': 'en-us',
-        'safeSearch': 'Strict',
+        'safeSearch': 'Off',
     })
 
     try:
