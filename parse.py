@@ -1,5 +1,5 @@
-import edit_img.py
-import search_img.py
+import edit_img
+import search_img
 
 requested_img_id = ""
 origin_url = ""
