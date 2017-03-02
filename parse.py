@@ -56,12 +56,12 @@ def msg_handler(sender_id, message_text):
         if parsed_command[1] == "height":
 
             global command_dict
-            del global command_dict["height"]
+            del command_dict["height"]
 
             
         elif parsed_command[1] == "width":
             global command_dict
-            del global command_dict["width"]
+            del command_dict["width"]
         elif parsed_command[1] == "grayscale":
             global command_dict
             del command_dict["grayscale"]
