@@ -70,6 +70,7 @@ def msg_handler(sender_id, message_text):
     elif parsed_command[0] == ":next":
         # increment offset by 1
         offset += 1
+
         send_back(sender_id, message_text)
 
     elif parsed_command[0] == ":back":
@@ -87,6 +88,7 @@ def msg_handler(sender_id, message_text):
 
 
 def send_back(sender_id, message_text):
+    
     result = search_image_3(message_text, offset)
     if result is None:
         send_message(sender_id, "Your image of " + message_text + " cannot be found.")

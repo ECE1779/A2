@@ -125,4 +125,8 @@ def log(message):  # simple wrapper for logging to stdout on heroku
 
 
 if __name__ == '__main__':
+    global requested_img_id
+    global origin_url 
+    global offset 
+    global command_dict
     app.run(debug=True)
