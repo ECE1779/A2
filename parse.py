@@ -5,6 +5,7 @@ command_dict = dict()
 
 def msg_handler(sender_id, message_text):
     parsed_command = message_text.split(" ")
+    print(parsed_command)
     if parsed_command[0] == ":select" and origin_url != "":
         
         requested_img_id = upload_image(origin_url)
