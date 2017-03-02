@@ -38,17 +38,16 @@ def webhook():
                     sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     message_text = messaging_event["message"]["text"]  # the message's text
-                    if message_text == "trump":
-                        send_message(sender_id, "make america great again")
-                        result = search_image("donald trump", 0)
-                        send_image(sender_id, result)
-                    elif message_text == "hello":
-                        send_message(sender_id, "world")
+
+                    msg_handler(sender_id, message_text)                    
+                    """
+                    result = search_image_3(message_text, 0)
+                    if result is None:
+                        send_message(sender_id, "Your image of " + message_text + " cannot be found.")
                     else:
-                        send_message(sender_id, "here's your picture of "+ message_text)
-                        result = search_image(message_text, 0)
+                        send_message(sender_id, "Here's your picture of "+ message_text)
                         send_image(sender_id, result)
-                        
+                    """
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass
 
@@ -61,47 +60,6 @@ def webhook():
     return "ok", 200
 
 
-
-
-########### Bing Search ############
-########### Python 2.7 #############
-#import http.client, urllib.request, urllib.parse, urllib.error, base64
-import httplib, urllib, base64, json
-
-def search_image(q, offset):
-
-
- 
-    headers = {
-        # Request headers
-        'Ocp-Apim-Subscription-Key': 'b23854bc1dc24ebcb32a94577b19b1c6',
-    }
-
-    params = urllib.urlencode({
-        # Request parameters
-        'q': q,
-        'count': '1',
-        'offset': offset,
-        'mkt': 'en-us',
-        'safeSearch': 'Moderate',
-    })
-
-    try:
-        conn = httplib.HTTPSConnection('api.cognitive.microsoft.com')
-        conn.request("GET", "/bing/v5.0/images/search?%s" % params, "{body}", headers)
-        response = conn.getresponse()
-        data = response.read()
-        #print(data)
-
-        conn.close()
-    except Exception as e:
-        print("[Errno {0}] {1}".format(e.errno, e.strerror))
-        
-    json_data = json.loads(data)
-    #print(json_data)
-    return json_data["value"][0]["contentUrl"]
-
-####################################
 
 
 def send_image(recipient_id, contentUrl):
@@ -156,6 +114,9 @@ def send_message(recipient_id, message_text):
     if r.status_code != 200:
         log(r.status_code)
         log(r.text)
+
+
+
 
 
 def log(message):  # simple wrapper for logging to stdout on heroku
