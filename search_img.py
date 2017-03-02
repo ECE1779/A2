@@ -2,6 +2,7 @@
 ########### Bing Search ############
 ########### Python 2.7 #############
 #import http.client, urllib.request, urllib.parse, urllib.error, base64
+"""
 import httplib, urllib, base64, json
 
 def search_image_2(q, offset):
@@ -40,7 +41,7 @@ def search_image_2(q, offset):
         return None
     else:
         return json_data["value"][0]["contentUrl"]
-
+"""
 ####################################
 ########### Python 3.2 #############
 import http.client, urllib.request, urllib.parse, urllib.error, base64, json

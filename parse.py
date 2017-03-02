@@ -1,3 +1,6 @@
+import edit_img.py
+import search_img.py
+
 requested_img_id = ""
 origin_url = ""
 offset = 0
