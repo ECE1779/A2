@@ -1,6 +1,6 @@
 from edit_img import *
 from search_img import *
-
+from app import *
 requested_img_id = ""
 origin_url = ""
 offset = 0
