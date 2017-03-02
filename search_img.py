@@ -57,7 +57,7 @@ def search_image_3(q, offset):
 
     params = urllib.parse.urlencode({
         # Request parameters
-        'q': 'cats',
+        'q': q,
         'count': '1',
         'offset': offset,
         'mkt': 'en-us',
