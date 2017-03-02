@@ -4,7 +4,7 @@ import json
 
 import requests
 from flask import Flask, request
-import parse
+from parse import *
 app = Flask(__name__)
 
 

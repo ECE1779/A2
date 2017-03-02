@@ -1,5 +1,5 @@
-import edit_img
-import search_img
+from edit_img import *
+from search_img import *
 
 requested_img_id = ""
 origin_url = ""
