@@ -8,7 +8,7 @@ from flask import Flask, request
 from parse import *
 from send import *
 from myds import *
-from edit_img import *
+from edit_img import upload_image, get_image
 
 
 
