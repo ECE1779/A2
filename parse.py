@@ -119,7 +119,7 @@ def send_back(sender_id, message_text):
     else:
         send_message(sender_id, "Here's your picture of "+ message_text)
         origin_url = result
-        print("set origin_url to " + oritin_url)
+        print("set origin_url to " + origin_url)
         send_image(sender_id, result)
 
 
