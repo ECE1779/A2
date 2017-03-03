@@ -1,17 +1,25 @@
 from edit_img import *
 from search_img import *
 from app import *
+
+
 requested_img_id = ""
 origin_url = ""
 offset = 0
 command_dict = dict()
 
 def msg_handler(sender_id, message_text):
+
+    global requested_img_id
+    global origin_url
+    global offset
+    global command_dict
+
     parsed_command = message_text.split(" ")
     print(parsed_command)
     if parsed_command[0] == ":select" and origin_url != "":
         
-        global requested_img_id
+
         requested_img_id = upload_image(origin_url)        
 
     elif parsed_command[0] == ":edit":
@@ -19,8 +27,7 @@ def msg_handler(sender_id, message_text):
         if parsed_command[1] == "height":
             if parsed_command[2].isdigit():
                 if int(parsed_command[2]) > 0 and int(parsed_command[2]) <= 100:              
-                
-                    global command_dict
+
                     command_dict.update({"height":parsed_command[2]+"%"})
             else:
                 send_message(sender_id, "input should be between 1 and 100")
@@ -28,20 +35,19 @@ def msg_handler(sender_id, message_text):
         elif parsed_command[1] == "width":
             if parsed_command[2].isdigit():
                 if int(parsed_command[2]) > 0 and int(parsed_command[2]) <= 100:              
-               
-                    global command_dict
+
                     command_dict.update({"width":parsed_command[2]+"%"})
             else:
                 send_message(sender_id, "input should be between 1 and 100")
             
         elif parsed_command[1] == "grayscale":
             
-            global command_dict
+
             command_dict.update({"grayscale":""})
         
         elif parsed_command[1] == "blur":
             
-            global command_dict
+
             command_dict.update({"blur":parsed_command[2]})
 
         else:
@@ -55,19 +61,19 @@ def msg_handler(sender_id, message_text):
         #TODO handle edit commands here
         if parsed_command[1] == "height":
 
-            global command_dict
+
             del command_dict["height"]
 
             
         elif parsed_command[1] == "width":
-            global command_dict
+
             del command_dict["width"]
         elif parsed_command[1] == "grayscale":
-            global command_dict
+
             del command_dict["grayscale"]
         
         elif parsed_command[1] == "blur":
-            global command_dict
+
             del command_dict["blur"]
         else:
             send_message(sender_id, "wrong edit command!")
@@ -78,13 +84,13 @@ def msg_handler(sender_id, message_text):
 
     elif parsed_command[0] == ":next":
         # increment offset by 1
-        global offset
+
         offset += 1
 
         send_back(sender_id, message_text)
 
     elif parsed_command[0] == ":back":
-        global offset
+
         if offset == 0:
             send_back(sender_id, message_text)
         else:
@@ -92,15 +98,17 @@ def msg_handler(sender_id, message_text):
             send_back(sender_id, message_text)
     else:
         # search the image 
-        global offset
+
         offset = 0
-        global command_dict
+
         command_dict = dict()
 
         send_back(sender_id, message_text)
 
 
 def send_back(sender_id, message_text):
+    
+    global origin_url
     
     result = search_image_3(message_text, offset)
     if result is None:
