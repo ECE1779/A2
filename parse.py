@@ -52,7 +52,7 @@ def msg_handler(newsearch):
         if parsed_command[1] == "height" or parsed_command[1] == "width" or parsed_command[1] == "grayscale" or parsed_command[1] == "blur":
 
 
-            del newsearch.delete(parsed_command)
+            newsearch.delete(parsed_command)
 
         else:
             send_message(sender_id, "wrong edit command!")
