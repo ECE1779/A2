@@ -22,7 +22,7 @@ def msg_handler(sender_id, message_text):
         
         print("entered select")
         requested_img_id = upload_image(origin_url)        
-
+        print("img selected" + requested_img_id)
     elif parsed_command[0] == ":edit":
         #TODO handle edit commands here
         print("entered edit")
@@ -56,7 +56,7 @@ def msg_handler(sender_id, message_text):
             send_message(sender_id, "wrong edit command!")
 
         #fucking send the command to image api
-        editted_img_url = get_image(requested_img_id, command_dict)
+        edited_img_url = get_image(requested_img_id, command_dict)
         send_image(sender_id, eddited_img_url)
 
     elif parsed_command[0] == ":del":
