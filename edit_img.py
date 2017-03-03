@@ -15,15 +15,17 @@ def upload_image(url):
         response = conn.getresponse()
 
         data = response.read()
-        while data is None:
+        json_data = json.loads(data)
+        while json_data["success"] == False:
             response = conn.getresponse()
             data = response.read()
+            json_data = json.loads(data)
         #print(data)
         conn.close()
     except Exception as e:
         print("[Errno {0}] {1}".format(e.errno, e.strerror))
 
-    json_data = json.loads(data)
+    
     print(json_data)
 
     if json_data["success"] == False:
