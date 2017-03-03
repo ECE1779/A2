@@ -1,14 +1,5 @@
 
-import os
-import sys
-import json
-
-import requests
-from flask import Flask, request
-from parse import *
-from send import *
-from myds import *
-from edit_img import upload_image, get_image
+from edit_img import *
 
 
 

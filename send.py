@@ -3,10 +3,7 @@ import sys
 import json
 
 import requests
-from edit_img import *
-from search_img import *
-from send import *
-from myds import *
+
 def send_image(recipient_id, contentUrl):
 
     log("sending message to {recipient}: {text}".format(recipient=recipient_id, text=contentUrl))
