@@ -1,5 +1,8 @@
 
-
+from edit_img import *
+from search_img import *
+from send import *
+from myds import *
 
 
 class searchinfo(object):
