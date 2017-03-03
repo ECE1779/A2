@@ -3,17 +3,15 @@ from search_img import *
 from app import *
 
 
-requested_img_id = ""
-origin_url = ""
-offset = 0
-command_dict = dict()
+global requested_img_id = ""
+global origin_url = ""
+global offset = 0
+global command_dict = dict()
 
 def msg_handler(sender_id, message_text):
 
     
-    global origin_url
-    global offset
-    global command_dict
+
 
     parsed_command = message_text.split(" ")
     print(parsed_command[0])
@@ -21,7 +19,7 @@ def msg_handler(sender_id, message_text):
     if parsed_command[0] == ":select" :
         
         print("entered select")
-        global requested_img_id
+
         requested_img_id = upload_image(origin_url)        
         print("img selected " + str(requested_img_id))
     elif parsed_command[0] == ":edit":
