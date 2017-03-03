@@ -1,5 +1,13 @@
 import http.client, urllib.request, urllib.parse, urllib.error, base64, json
+import os
+import sys
+import json
 
+import requests
+from flask import Flask, request
+from parse import *
+from send import *
+from myds import *
 ########### ImageResizer ###########
 def upload_image(url):
     # https://api.imageresizer.io/images?key=8306ec405392ace375c33449ab79acbdcea54890&url=https://upload.wikimedia.org/wikipedia/commons/6/65/Tesla_Model_S_Indoors.jpg
