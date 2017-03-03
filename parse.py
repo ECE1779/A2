@@ -19,11 +19,12 @@ def msg_handler(sender_id, message_text):
     print(parsed_command)
     if parsed_command[0] == ":select" and origin_url != "":
         
-
+        print("entered select")
         requested_img_id = upload_image(origin_url)        
 
     elif parsed_command[0] == ":edit":
         #TODO handle edit commands here
+        print("entered edit")
         if parsed_command[1] == "height":
             if parsed_command[2].isdigit():
                 if int(parsed_command[2]) > 0 and int(parsed_command[2]) <= 100:              
@@ -59,6 +60,7 @@ def msg_handler(sender_id, message_text):
 
     elif parsed_command[0] == ":del":
         #TODO handle edit commands here
+        print("entered del")
         if parsed_command[1] == "height":
 
 
@@ -84,13 +86,13 @@ def msg_handler(sender_id, message_text):
 
     elif parsed_command[0] == ":next":
         # increment offset by 1
-
+        print("entered next")
         offset += 1
 
         send_back(sender_id, message_text)
 
     elif parsed_command[0] == ":back":
-
+        print("enteered back")
         if offset == 0:
             send_back(sender_id, message_text)
         else:
@@ -98,7 +100,7 @@ def msg_handler(sender_id, message_text):
             send_back(sender_id, message_text)
     else:
         # search the image 
-
+        print("search img")
         offset = 0
 
         command_dict = dict()
