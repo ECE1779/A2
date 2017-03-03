@@ -48,7 +48,7 @@ import http.client, urllib.request, urllib.parse, urllib.error, base64, json
 
 
 def search_image_3(q, offset):
-    import http.client, urllib.request, urllib.parse, urllib.error, base64
+
 
     headers = {
         # Request headers
