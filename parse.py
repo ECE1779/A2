@@ -16,7 +16,8 @@ def msg_handler(sender_id, message_text):
     global command_dict
 
     parsed_command = message_text.split(" ")
-    print(parsed_command)
+    print(parsed_command[0])
+    
     if parsed_command[0] == ":select" and origin_url != "":
         
         print("entered select")
@@ -118,6 +119,7 @@ def send_back(sender_id, message_text):
     else:
         send_message(sender_id, "Here's your picture of "+ message_text)
         origin_url = result
+        print("set origin_url to " + oritin_url)
         send_image(sender_id, result)
 
 
