@@ -1,4 +1,8 @@
+import os
+import sys
+import json
 
+import requests
 
 def send_image(recipient_id, contentUrl):
 
