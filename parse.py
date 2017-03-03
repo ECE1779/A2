@@ -13,8 +13,10 @@ global command_dict
 command_dict = {}
 
 def msg_handler(sender_id, message_text):
-
-    
+    global requested_img_id 
+    global origin_url 
+    global offset
+    global command_dict 
 
 
     parsed_command = message_text.split(" ")
