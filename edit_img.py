@@ -31,7 +31,7 @@ def upload_image(url):
         #print(data)
         conn.close()
     except Exception as e:
-        print("[Errno {0}] {1}".format(e.errno, e.strerror))
+        #print("[Errno {0}] {1}".format(e.errno, e.strerror))
 
     
     #print(json_data)
