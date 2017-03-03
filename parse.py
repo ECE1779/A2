@@ -57,7 +57,7 @@ def msg_handler(sender_id, message_text):
 
         #fucking send the command to image api
         edited_img_url = get_image(requested_img_id, command_dict)
-        send_image(sender_id, eddited_img_url)
+        send_image(sender_id, edited_img_url )
 
     elif parsed_command[0] == ":del":
         #TODO handle edit commands here
