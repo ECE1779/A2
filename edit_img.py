@@ -31,6 +31,7 @@ def upload_image(url):
 
 def get_image(img_id, command):
     head = "https://im.ages.io/"
+    print(img_id)
     #img_id
     #"?"
     params = urllib.parse.urlencode(command)

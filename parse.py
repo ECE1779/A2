@@ -39,6 +39,7 @@ def msg_handler(sender_id, message_text):
                 if int(parsed_command[2]) > 0 and int(parsed_command[2]) <= 100:              
 
                     command_dict.update({"width":parsed_command[2]+"%"})
+                    
             else:
                 send_message(sender_id, "input should be between 1 and 100")
             
