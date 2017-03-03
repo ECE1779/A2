@@ -13,9 +13,11 @@ def upload_image(url):
         conn = http.client.HTTPSConnection('api.imageresizer.io')
         conn.request("GET", "/images?%s" % params)
         response = conn.getresponse()
-        while response is None:
-            response = conn.getresponse()
+
         data = response.read()
+        while data is None:
+            response = conn.getresponse()
+            data = response.read()
         #print(data)
         conn.close()
     except Exception as e:
