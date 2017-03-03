@@ -22,7 +22,7 @@ def msg_handler(sender_id, message_text):
         
         print("entered select")
         requested_img_id = upload_image(origin_url)        
-        print("img selected" + requested_img_id)
+        print("img selected " + str(requested_img_id))
     elif parsed_command[0] == ":edit":
         #TODO handle edit commands here
         print("entered edit")
