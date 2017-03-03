@@ -3,10 +3,14 @@ from search_img import *
 from app import *
 
 
-global requested_img_id = ""
-global origin_url = ""
-global offset = 0
-global command_dict = dict()
+global requested_img_id 
+requested_img_id = ""
+global origin_url 
+origin_url = ""
+global offset
+offset = 0
+global command_dict 
+command_dict = {}
 
 def msg_handler(sender_id, message_text):
 
