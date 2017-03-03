@@ -18,7 +18,7 @@ def msg_handler(sender_id, message_text):
     parsed_command = message_text.split(" ")
     print(parsed_command[0])
     
-    if parsed_command[0] == ":select" and origin_url != "":
+    if parsed_command[0] == ":select" :
         
         print("entered select")
         requested_img_id = upload_image(origin_url)        
