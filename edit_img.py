@@ -20,7 +20,7 @@ def upload_image(url):
         print("[Errno {0}] {1}".format(e.errno, e.strerror))
 
     json_data = json.loads(data)
-    #print(json_data)
+    print(json_data)
 
     if json_data["success"] == False:
         return None

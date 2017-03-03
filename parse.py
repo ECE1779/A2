@@ -56,7 +56,7 @@ def msg_handler(sender_id, message_text):
             send_message(sender_id, "wrong edit command!")
 
         #fucking send the command to image api
-        edited_img_url = get_image(requested_img_id, command_dict)
+        edited_img_url = get_image(str(requested_img_id), command_dict)
         send_image(sender_id, edited_img_url )
 
     elif parsed_command[0] == ":del":
