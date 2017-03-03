@@ -6,7 +6,7 @@ import requests
 from flask import Flask, request
 from parse import *
 from send import *
-from class import *
+from myds import *
 
 app = Flask(__name__)
 
