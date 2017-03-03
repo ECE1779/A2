@@ -8,7 +8,7 @@ from myds import *
 def msg_handler(newsearch):
 
 
-    parsed_command = message_text.split(" ")
+    parsed_command = newsearch.topic.split(" ")
     #print(parsed_command[0])
     
     if parsed_command[0] == ":select" :
