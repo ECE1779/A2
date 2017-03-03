@@ -9,10 +9,7 @@ class searchinfo(object):
     def __init__(self, sender_id, topic):
         self.sender_id = sender_id
         self.topic = topic
-        self.requested_img_id 
-        self.origin_url 
-        self.offset 
-        self.command_dict = {}
+
         
     def select(self):
         self.requested_img_id = upload_image(self.origin_url)
