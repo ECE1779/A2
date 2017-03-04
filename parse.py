@@ -8,7 +8,7 @@ from myds import *
 def msg_handler(sender_id, message_text):
     
     parsed_command = message_text.split(":")
-    #print(parsed_command)
+    print(parsed_command)
     if len(parsed_command) > 5:
         send_message(sender_id, "Too many commands")
         return
@@ -19,8 +19,8 @@ def msg_handler(sender_id, message_text):
     
     commands = {}
     for each_command in parsed_command:
-        each_command.strip()
-        print("command is "+each_command)
+        each_command = each_command.strip()
+        print("each command is /"+each_command)
         parsed_each_command = each_command.split(" ")
         print(parsed_each_command)
         if parsed_each_command[0] != "height" and \
