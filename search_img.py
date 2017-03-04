@@ -44,7 +44,7 @@ def search_image_2(q, offset):
 """
 ####################################
 ########### Python 3.2 #############
-import http.client, urllib.request, urllib.parse, urllib.error, base64, json
+import http.client, urllib.request, urllib.parse, urllib.error, base64, json, os
 
 
 def search_image_3(q, offset):
