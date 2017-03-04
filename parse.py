@@ -64,7 +64,10 @@ def msg_handler(sender_id, message_text, newsearch):
     elif parsed_command[0] == ":next":
         # increment offset by 1
         print("entered next")
+        if newsearch.topic is None
+            pass
         newsearch.next_img()
+
         result = search_image_3(newsearch.topic, newsearch.offset)
         if result is None:
             send_message(sender_id, "Your image of " + newsearch.topic + " cannot be found.")
@@ -77,6 +80,8 @@ def msg_handler(sender_id, message_text, newsearch):
 
     elif parsed_command[0] == ":back":
         print("entered back")
+        if newsearch.topic is None
+            pass        
         newsearch.prev_img()
         result = search_image_3(newsearch.topic, newsearch.offset)
 
