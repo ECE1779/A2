@@ -49,7 +49,7 @@ def msg_handler(sender_id, message_text):
                 
             #check [1]'s number part is 1-100
             number_arg = parsed_each_command[1].split("%")[0]
-            if number_arg < 1 or number_arg > 100:
+            if int(number_arg) < 1 or int(number_arg) > 100:
                 send_message(sender_id, "percentage must be between 1 to 100")
                 return
                 

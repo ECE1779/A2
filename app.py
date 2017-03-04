@@ -9,8 +9,8 @@ from send import *
 from myds import *
 
 app = Flask(__name__)
-newsearch = searchinfo()
-print("global newsearch set")
+#newsearch = searchinfo()
+#print("global newsearch set")
 
 @app.route('/', methods=['GET'])
 def verify():
@@ -54,7 +54,7 @@ def webhook():
                                 """
                         send_message(sender_id,help)
                         return "ok", 200
-                    global newsearch
+                    #global newsearch
                     #newsearch = searchinfo()
                     msg_handler(sender_id, message_text)                    
                     #msg_handler(newsearch)
