@@ -21,7 +21,7 @@ def msg_handler(sender_id, message_text, newsearch):
         print("entered edit")
         if newsearch.topic == "":
             print("im going back")
-            return  
+            return newsearch
         if parsed_command[1] == "height" or parsed_command[1] == "width":
             if parsed_command[2].isdigit():
                 if int(parsed_command[2]) > 0 and int(parsed_command[2]) <= 100:              
@@ -52,7 +52,7 @@ def msg_handler(sender_id, message_text, newsearch):
         print("entered del")
         if newsearch.topic == "":
             print("im going back")
-            return  
+            return  newsearch
         if parsed_command[1] == "height" or parsed_command[1] == "width" or parsed_command[1] == "grayscale" or parsed_command[1] == "blur":
 
 
@@ -72,7 +72,7 @@ def msg_handler(sender_id, message_text, newsearch):
         print("entered next")
         if newsearch.topic == "":
             print("im going back")
-            return
+            return newsearch
         newsearch.next_img()
 
         result = search_image_3(newsearch.topic, newsearch.offset)
@@ -89,7 +89,7 @@ def msg_handler(sender_id, message_text, newsearch):
         print("entered back")
         if newsearch.topic == "":
             print("im going back")
-            return     
+            return     newsearch
         newsearch.prev_img()
         result = search_image_3(newsearch.topic, newsearch.offset)
 
@@ -113,6 +113,9 @@ def msg_handler(sender_id, message_text, newsearch):
             newsearch.origin_url = result
             print("set origin_url to " + newsearch.origin_url)
             send_image(sender_id, result)
+            
+            
+    return newsearch
 
 
 

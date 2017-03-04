@@ -26,7 +26,7 @@ def verify():
 
 @app.route('/', methods=['POST'])
 def webhook():
-
+    
     # endpoint for processing incoming messaging events
 
     data = request.get_json()
@@ -43,9 +43,9 @@ def webhook():
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     message_text = messaging_event["message"]["text"]  # the message's text
                     
-                    #global newsearch
+                    global newsearch
                     #newsearch = searchinfo()
-                    msg_handler(sender_id, message_text, newsearch)                    
+                    newsearch = msg_handler(sender_id, message_text, newsearch)                    
                     #msg_handler(newsearch)
                     """
                     result = search_image_3(message_text, 0)

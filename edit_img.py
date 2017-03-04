@@ -16,7 +16,7 @@ def upload_image(url):
         'key': '8306ec405392ace375c33449ab79acbdcea54890',
         'url': url,
     })
-    print("uploading image "+url)
+    print("uploading image url is "+url)
     try:
         conn = http.client.HTTPSConnection('api.imageresizer.io')
         conn.request("GET", "/images?%s" % params)
