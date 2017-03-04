@@ -53,7 +53,7 @@ def webhook():
                                 example: catfish: height 80%: width 80%: blur 5: grayscale
                                 """
                         send_message(sender_id,help)
-                        pass
+                        return "ok", 200
                     global newsearch
                     #newsearch = searchinfo()
                     newsearch = msg_handler(sender_id, message_text, newsearch)                    
