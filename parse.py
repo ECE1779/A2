@@ -19,9 +19,9 @@ def msg_handler(sender_id, message_text, newsearch):
     elif parsed_command[0] == ":edit":
         #TODO handle edit commands here
         print("entered edit")
-        if newsearch.topic is None:
+        if newsearch.topic == "":
             print("im going back")
-            pass   
+            return  
         if parsed_command[1] == "height" or parsed_command[1] == "width":
             if parsed_command[2].isdigit():
                 if int(parsed_command[2]) > 0 and int(parsed_command[2]) <= 100:              
@@ -50,9 +50,9 @@ def msg_handler(sender_id, message_text, newsearch):
     elif parsed_command[0] == ":del":
         #TODO handle edit commands here
         print("entered del")
-        if newsearch.topic is None:
+        if newsearch.topic == "":
             print("im going back")
-            pass   
+            return  
         if parsed_command[1] == "height" or parsed_command[1] == "width" or parsed_command[1] == "grayscale" or parsed_command[1] == "blur":
 
 
@@ -70,7 +70,6 @@ def msg_handler(sender_id, message_text, newsearch):
     elif parsed_command[0] == ":next":
         # increment offset by 1
         print("entered next")
-        print("topic is " + newsearch.topic)
         if newsearch.topic == "":
             print("im going back")
             return
@@ -88,9 +87,9 @@ def msg_handler(sender_id, message_text, newsearch):
 
     elif parsed_command[0] == ":back":
         print("entered back")
-        if newsearch.topic is None:
+        if newsearch.topic == "":
             print("im going back")
-            pass        
+            return     
         newsearch.prev_img()
         result = search_image_3(newsearch.topic, newsearch.offset)
 
