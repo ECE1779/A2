@@ -43,8 +43,8 @@ def webhook():
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     message_text = messaging_event["message"]["text"]  # the message's text
                     
-                    global newsearch
-                    newsearch = searchinfo(sender_id, message_text)
+                    #global newsearch
+                    #newsearch = searchinfo()
                     msg_handler(sender_id, message_text)                    
                     #msg_handler(newsearch)
                     """
