@@ -9,7 +9,7 @@ def msg_handler(sender_id, message_text):
     
     parsed_command = message_text.split(":")
     #print(parsed_command[0])
-    if parsed_command.len() > 5:
+    if len(parsed_command) > 5:
         send_message(sender_id, "Too many commands")
         return
     #get the search keywords
@@ -74,6 +74,7 @@ def msg_handler(sender_id, message_text):
             commands.update({parsed_each_command[0] : ""})
             
     #at here the commands should be ready
+    print(commands)
     #search the actual img
     result_url = search_image_3(topic, 0)
     if result_url is None:
