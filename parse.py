@@ -71,8 +71,7 @@ def msg_handler(sender_id, message_text):
             commands.update({parsed_each_command[0] : parsed_each_command[1]})
             
         if parsed_each_command[0] == "grayscale":
-            if parsed_each_command[1] or \
-               parsed_each_command[1] != "":
+            if len(parsed_each_command) > 1:
                 send_message(sender_id, "grayscale only takes 1 argument")
                 return
                 
