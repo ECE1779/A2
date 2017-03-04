@@ -29,7 +29,7 @@ def msg_handler(sender_id, message_text):
         if parsed_each_command[0] != "height" and \
            parsed_each_command[0] != "width"  and \
            parsed_each_command[0] != "blur"   and \
-           parsed_each_command[0] != "graycscale"  :
+           parsed_each_command[0] != "grayscale"  :
             
             send_message(sender_id, "unsupported command")
             return
