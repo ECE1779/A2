@@ -69,20 +69,22 @@ def msg_handler(sender_id, message_text, newsearch):
         if result is None:
             send_message(sender_id, "Your image of " + message_text + " cannot be found.")
         else:
-            send_message(sender_id, "Here's your picture of "+ message_text)
+            send_message(sender_id, "Showing next picture")
             newsearch.origin_url = result
             print("set origin_url to " + newsearch.origin_url)
             send_image(sender_id, result)
+            print(newsearch.offset)
 
     elif parsed_command[0] == ":back":
         print("entered back")
         newsearch.prev_img()
         result = search_image_3(message_text, newsearch.offset)
 
-        send_message(sender_id, "Here's your picture of "+ message_text)
+        send_message(sender_id, "Showing previous picture")
         newsearch.origin_url = result
         print("set origin_url to " + newsearch.origin_url)
         send_image(sender_id, result)
+        print(newsearch.offset)
 
     else:
         # search the FUCKING IMAGE 
