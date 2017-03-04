@@ -70,7 +70,7 @@ def msg_handler(sender_id, message_text, newsearch):
     elif parsed_command[0] == ":next":
         # increment offset by 1
         print("entered next")
-        if newsearch.topic is None:
+        if newsearch.topic == "":
             print("im going back")
             pass
         newsearch.next_img()
