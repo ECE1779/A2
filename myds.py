@@ -14,6 +14,14 @@ class searchinfo(object):
         self.offset = 0
         self.command_dict = {}
         
+    def __init__(self):
+        self.sender_id = ""
+        self.topic = ""
+        self.requested_img_id = ""
+        self.origin_url = ""
+        self.offset = 0
+        self.command_dict = {}
+        
     def select(self):
         self.requested_img_id = upload_image(self.origin_url)
         

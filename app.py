@@ -9,7 +9,7 @@ from send import *
 from myds import *
 
 app = Flask(__name__)
-newsearch
+newsearch = searchinfo()
 print("global newsearch set")
 
 @app.route('/', methods=['GET'])
