@@ -7,7 +7,9 @@ from myds import *
 
 def msg_handler(sender_id, message_text, newsearch):
     #global newsearch
-    print(newsearch)
+    print(newsearch.topic)
+    print(newsearch.requested_img_id)
+    
     parsed_command = message_text.split(" ")
     #print(parsed_command[0])
     
