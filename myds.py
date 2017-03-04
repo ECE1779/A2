@@ -27,10 +27,10 @@ class searchinfo(object):
         
     def next_img(self):
         self.offset += 1
-        self.origin_url = search_image_3(self.topic, self.offset)
+        #self.origin_url = search_image_3(self.topic, self.offset)
         
     def prev_img(self):
         if self.offset > 0:
             self.offset -=1
-        self.origin_url = search_image_3(self.topic, self.offset)
+        #self.origin_url = search_image_3(self.topic, self.offset)
     
