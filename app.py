@@ -9,7 +9,8 @@ from send import *
 from myds import *
 
 app = Flask(__name__)
-
+newsearch
+print("global newsearch set")
 
 @app.route('/', methods=['GET'])
 def verify():
@@ -42,9 +43,10 @@ def webhook():
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     message_text = messaging_event["message"]["text"]  # the message's text
                     
+                    global newsearch
                     newsearch = searchinfo(sender_id, message_text)
-                    #msg_handler(sender_id, message_text)                    
-                    msg_handler(newsearch)
+                    msg_handler(sender_id, message_text)                    
+                    #msg_handler(newsearch)
                     """
                     result = search_image_3(message_text, 0)
                     if result is None:
@@ -77,4 +79,5 @@ def log(message):  # simple wrapper for logging to stdout on heroku
 
 
 if __name__ == '__main__':
+    
     app.run(debug=True)
