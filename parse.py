@@ -5,14 +5,90 @@ from myds import *
 
 
 
-def msg_handler(sender_id, message_text, newsearch):
-    #global newsearch
-    print(newsearch.topic)
-    print(newsearch.requested_img_id)
+def msg_handler(sender_id, message_text):
     
-    parsed_command = message_text.split(" ")
+    parsed_command = message_text.split(":")
     #print(parsed_command[0])
+    if parsed_command.len() > 5:
+        send_message(sender_id, "Too many commands")
+        return
+    #get the search keywords
+    topic = parsed_command[0]
+    del parsed_command[0]
     
+    
+    commands = {}
+    for each_command in parsed_command:
+        parsed_each_command = each_command.split(" ")
+        if parsed_each_command[0] != "height" or \
+           parsed_each_command[0] != "width"  or \
+           parsed_each_command[0] != "blur"   or \
+           parsed_each_command[0] != "graycscale" or :
+            
+            send_message(sender_id, "unsupported command")
+            return
+        
+        if parsed_each_command[0] == "height" or \
+           parsed_each_command[0] == "width":
+        
+            if parsed_each_command[1] is None or \
+               parsed_each_command[1] == "":
+                send_message(sender_id, parsed_each_command[0] + " expects 2 arguments")
+                return
+
+            #check if [1] is %
+            if parsed_each_command[1].endswith("%") is False:
+                send_message(sender_id, parsed_each_command[0] + " can only take a percentile")
+                return
+                
+            #check [1]'s number part is 1-100
+            number_arg = parsed_each_command[1].split("%")[0]
+            if number_arg < 1 or number_arg > 100:
+                send_message(sender_id, "percentage must be between 1 to 100")
+                return
+                
+            #now we are good to go
+            commands.update({parsed_each_command[0] : parsed_each_command[1]})
+            
+        if parsed_each_command[0] == "blur":
+            
+            if parsed_each_command[1] is None or \
+               parsed_each_command[1] == "":
+                send_message(sender_id, parsed_each_command[0] + " expects 2 arguments")
+                return
+
+            if parsed_each_command[1].isdigit() is False:
+                send_message(sender_id, "blur can only take a number")
+                return
+            
+            #good to go
+            commands.update({parsed_each_command[0] : parsed_each_command[1]})
+            
+        if parsed_each_command[0] == "grayscale":
+            if parsed_each_command[1] or \
+               parsed_each_command[1] != "":
+                send_message(sender_id, "grayscale only takes 1 argument")
+                return
+                
+            #good to go
+            commands.update({parsed_each_command[0] : ""})
+            
+    #at here the commands should be ready
+    #search the actual img
+    result_url = search_image_3(topic, 0)
+    if result_url is None:
+        send_message(sender_id, "Your image of " + topic + " cannot be found.")
+    else:
+        send_message(sender_id, "Here's your picture of "+ topic)
+    
+    #get requested img id
+    requested_img_id = upload_img(result_url)
+    #get editted img
+    editted_url = get_imame(requested_img_id, commands)
+    print(editted_url)
+    send_image(sender_id, editted_url)
+    return
+    """
     if parsed_command[0] == ":select" :
         
         print("entered select")
@@ -116,9 +192,9 @@ def msg_handler(sender_id, message_text, newsearch):
             print("set origin_url to " + newsearch.origin_url)
             send_image(sender_id, result)
             
-            
-    return newsearch
-
+     
+    return 
+    """
 
 
 
