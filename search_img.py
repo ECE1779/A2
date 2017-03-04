@@ -75,9 +75,9 @@ def search_image_3(q, offset):
         print("[Errno {0}] {1}".format(e.errno, e.strerror))
 
     json_data = json.loads(data)
-    #print(json_data)
+    print(json_data)
 
-    if json_data["value"][0] is None:
+    if json_data["value"]["0"] is None:
         return None
     else:
         return json_data["value"][0]["contentUrl"]
