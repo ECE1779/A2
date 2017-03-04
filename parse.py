@@ -29,7 +29,7 @@ def msg_handler(sender_id, message_text):
                 send_message(sender_id, "input should be between 1 and 100")
             
                     
-        elif parsed_command[1] == "grayscale" or parsed_command[1] == "blur"
+        elif parsed_command[1] == "grayscale" or parsed_command[1] == "blur":
 
             print("send command " + parsed_command[1])
             newsearch.edit(parsed_command)
