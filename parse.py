@@ -73,7 +73,7 @@ def msg_handler(sender_id, message_text, newsearch):
         print("topic is " + newsearch.topic)
         if newsearch.topic == "":
             print("im going back")
-            pass
+            return
         newsearch.next_img()
 
         result = search_image_3(newsearch.topic, newsearch.offset)
