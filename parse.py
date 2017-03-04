@@ -21,7 +21,10 @@ def msg_handler(sender_id, message_text):
     for each_command in parsed_command:
         each_command = each_command.strip()
         print("each command is /"+each_command)
-        parsed_each_command = each_command.split(" ")
+        #no leading and tailing 0
+        #" ".join(each_command.split())
+        
+        parsed_each_command = each_command.split()
         print(parsed_each_command)
         if parsed_each_command[0] != "height" and \
            parsed_each_command[0] != "width"  and \
