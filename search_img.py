@@ -11,7 +11,7 @@ def search_image_2(q, offset):
  
     headers = {
         # Request headers
-        'Ocp-Apim-Subscription-Key': 'b23854bc1dc24ebcb32a94577b19b1c6',
+        'Ocp-Apim-Subscription-Key': '',
     }
 
     params = urllib.urlencode({
@@ -52,7 +52,7 @@ def search_image_3(q, offset):
 
     headers = {
         # Request headers
-        'Ocp-Apim-Subscription-Key': 'b23854bc1dc24ebcb32a94577b19b1c6',
+        'Ocp-Apim-Subscription-Key':  os.environ["MS_TOKEN"],
     }
 
     params = urllib.parse.urlencode({

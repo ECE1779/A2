@@ -13,7 +13,7 @@ def upload_image(url):
     # https://api.imageresizer.io/images?key=8306ec405392ace375c33449ab79acbdcea54890&url=https://upload.wikimedia.org/wikipedia/commons/6/65/Tesla_Model_S_Indoors.jpg
     # this should return an image url
     params = urllib.parse.urlencode({
-        'key': '8306ec405392ace375c33449ab79acbdcea54890',
+        'key':  os.environ["IMG_RESIZER_TOKEN"],
         'url': url,
     })
     #print("uploading image url is "+url)
