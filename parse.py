@@ -70,6 +70,7 @@ def msg_handler(sender_id, message_text, newsearch):
     elif parsed_command[0] == ":next":
         # increment offset by 1
         print("entered next")
+        print("topic is " + newsearch.topic)
         if newsearch.topic == "":
             print("im going back")
             pass
