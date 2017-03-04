@@ -43,7 +43,7 @@ def webhook():
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     message_text = messaging_event["message"]["text"]  # the message's text
                     if message_text == ":?":
-                        help = "Type keywords to search images.\n \
+                        help = """Type keywords to search images.\n \
                                 Add edit commands after your keyworkds to edit the image, separate by :\n\
                                 Supported commands:\n\
                                 height [num]%\n\
@@ -51,7 +51,7 @@ def webhook():
                                 blur [num]\n\
                                 grayscale\n\
                                 example: catfish: height 80%: width 80%: blur 5: grayscale
-                                "
+                                """
                         print(help)
                     global newsearch
                     #newsearch = searchinfo()
