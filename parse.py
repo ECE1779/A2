@@ -83,7 +83,7 @@ def msg_handler(sender_id, message_text):
         send_message(sender_id, "Here's your picture of "+ topic)
     
     #get requested img id
-    requested_img_id = upload_img(result_url)
+    requested_img_id = upload_image(result_url)
     #get editted img
     editted_url = get_imame(requested_img_id, commands)
     print(editted_url)
