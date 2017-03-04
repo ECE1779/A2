@@ -26,6 +26,9 @@ def msg_handler(sender_id, message_text):
         
         parsed_each_command = each_command.split()
         print(parsed_each_command)
+        if not parsed_each_command:
+            send_message(sender_id, "wrong format")
+            return
         if parsed_each_command[0] != "height" and \
            parsed_each_command[0] != "width"  and \
            parsed_each_command[0] != "blur"   and \
