@@ -82,16 +82,19 @@ def msg_handler(sender_id, message_text):
         return
         
     #only search
-    if commands is None:
+    if not commands :
+        print("send original search img")
         send_message(sender_id, "Here's your picture of "+ topic)
         return
         
     #get requested img id
+    print("uploading img")
     requested_img_id = upload_image(result_url)
-    print(requested_img_id)
+    print("request id "requested_img_id)
     #get editted img
     editted_url = get_image(requested_img_id, commands)
-    print(editted_url)
+    print("final url "editted_url)
+    send_message(sender_id,"Here's yout editted iamge of " + topic)
     send_image(sender_id, editted_url)
     return
     """

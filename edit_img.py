@@ -16,14 +16,14 @@ def upload_image(url):
         'key': '8306ec405392ace375c33449ab79acbdcea54890',
         'url': url,
     })
-    print("uploading image url is "+url)
+    #print("uploading image url is "+url)
     try:
         conn = http.client.HTTPSConnection('api.imageresizer.io')
         conn.request("GET", "/images?%s" % params)
         response = conn.getresponse()
-        print(response)
+        #print(response)
         data = response.read()
-        print(data)
+        #print(data)
         json_data = json.loads(data)
         
         #while json_data["success"] == False:
