@@ -9,8 +9,7 @@ from send import *
 from myds import *
 
 app = Flask(__name__)
-newsearch = searchinfo()
-print("global newsearch set")
+
 
 @app.route('/', methods=['GET'])
 def verify():
@@ -79,5 +78,6 @@ def log(message):  # simple wrapper for logging to stdout on heroku
 
 
 if __name__ == '__main__':
-    
+    newsearch = searchinfo()
+    print("global newsearch set")
     app.run(debug=True)
