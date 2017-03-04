@@ -45,7 +45,7 @@ def webhook():
                     
                     #global newsearch
                     #newsearch = searchinfo()
-                    msg_handler(sender_id, message_text)                    
+                    msg_handler(sender_id, message_text, newsearch)                    
                     #msg_handler(newsearch)
                     """
                     result = search_image_3(message_text, 0)

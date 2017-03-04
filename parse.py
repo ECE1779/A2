@@ -5,7 +5,7 @@ from myds import *
 
 
 
-def msg_handler(sender_id, message_text):
+def msg_handler(sender_id, message_text, newsearch):
     global newsearch
 
     parsed_command = message_text.split(" ")
