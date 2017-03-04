@@ -92,7 +92,7 @@ def msg_handler(sender_id, message_text, newsearch):
             send_message(sender_id, "Your image of " + message_text + " cannot be found.")
         else:
             send_message(sender_id, "Here's your picture of "+ message_text)
-            newsearch = searchinfo(sender_id. message_text)
+            newsearch = searchinfo()
             
             newsearch.origin_url = result
             print("set origin_url to " + newsearch.origin_url)

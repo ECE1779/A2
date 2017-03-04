@@ -6,13 +6,7 @@ from edit_img import *
 
 class searchinfo(object):
 
-    def __init__(self, sender_id, topic):
-        self.sender_id = sender_id
-        self.topic = topic
-        self.requested_img_id = ""
-        self.origin_url = ""
-        self.offset = 0
-        self.command_dict = {}
+
         
     def __init__(self):
         self.sender_id = ""
