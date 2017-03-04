@@ -22,7 +22,7 @@ def msg_handler(sender_id, message_text):
         each_command.strip()
         print("command is "+each_command)
         parsed_each_command = each_command.split(" ")
-        print("parsed command is " + parsed_each_command)
+        print(parsed_each_command)
         if parsed_each_command[0] != "height" and \
            parsed_each_command[0] != "width"  and \
            parsed_each_command[0] != "blur"   and \
