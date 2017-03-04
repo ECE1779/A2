@@ -8,7 +8,7 @@ from myds import *
 def msg_handler(sender_id, message_text):
     
     parsed_command = message_text.split(":")
-    #print(parsed_command[0])
+    #print(parsed_command)
     if len(parsed_command) > 5:
         send_message(sender_id, "Too many commands")
         return
@@ -19,10 +19,11 @@ def msg_handler(sender_id, message_text):
     
     commands = {}
     for each_command in parsed_command:
+        print("command is "+each_command)
         parsed_each_command = each_command.split(" ")
-        if parsed_each_command[0] != "height" or \
-           parsed_each_command[0] != "width"  or \
-           parsed_each_command[0] != "blur"   or \
+        if parsed_each_command[0] != "height" and \
+           parsed_each_command[0] != "width"  and \
+           parsed_each_command[0] != "blur"   and \
            parsed_each_command[0] != "graycscale"  :
             
             send_message(sender_id, "unsupported command")
@@ -85,6 +86,7 @@ def msg_handler(sender_id, message_text):
     if not commands :
         print("send original search img")
         send_message(sender_id, "Here's your picture of "+ topic)
+        send_image(sender_id, result_url)
         return
         
     #get requested img id
