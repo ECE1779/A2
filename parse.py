@@ -9,7 +9,7 @@ def msg_handler(sender_id, message_text):
     
     parsed_command = message_text.split(":")
     print(parsed_command)
-    if len(parsed_command) > 5:
+    if len(parsed_command) > 6:
         send_message(sender_id, "Too many commands")
         return
     #get the search keywords
@@ -32,9 +32,10 @@ def msg_handler(sender_id, message_text):
         if parsed_each_command[0] != "height" and \
            parsed_each_command[0] != "width"  and \
            parsed_each_command[0] != "blur"   and \
-           parsed_each_command[0] != "grayscale"  :
+           parsed_each_command[0] != "grayscale"  and \
+           parsed_each_command[0] != "ellipse" :
             
-            send_message(sender_id, "unsupported command")
+            send_message(sender_id, "unsupported command" + parsed_each_command[0])
             return
         
         if parsed_each_command[0] == "height" or \
@@ -53,7 +54,7 @@ def msg_handler(sender_id, message_text):
             #check [1]'s number part is 1-100
             number_arg = parsed_each_command[1].split("%")[0]
             if int(number_arg) < 1 or int(number_arg) > 100:
-                send_message(sender_id, "percentage must be between 1 to 100")
+                send_message(sender_id, parsed_each_command[0] + "percentage must be between 1 to 100")
                 return
                 
             #now we are good to go
@@ -80,6 +81,14 @@ def msg_handler(sender_id, message_text):
                 
             #good to go
             commands.update({parsed_each_command[0] : ""})
+
+        if parsed_each_command[0] == "ellipse":
+            if len(parsed_each_command) > 1:
+                send_message(sender_id, "ellipse only takes 1 argument")
+                return
+            #good to go
+            commands.update({parsed_each_command[0] : ""})
+            commands.update({"format" : "png"})
             
     #at here the commands should be ready
     print(commands)
