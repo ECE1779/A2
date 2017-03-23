@@ -62,8 +62,7 @@ def msg_handler(sender_id, message_text):
             
         if parsed_each_command[0] == "blur":
             
-            if parsed_each_command[1] is None or \
-               parsed_each_command[1] == "":
+            if  parsed_each_command[1] == "":
                 send_message(sender_id, parsed_each_command[0] + " expects 2 arguments")
                 return
 
@@ -112,7 +111,7 @@ def msg_handler(sender_id, message_text):
     #get editted img
     editted_url = get_image(requested_img_id, commands)
     print("final url "+editted_url)
-    send_message(sender_id,"Here's yout editted iamge of " + topic)
+    send_message(sender_id,"Here's your edited image of " + topic)
     send_image(sender_id, editted_url)
     return
     """
