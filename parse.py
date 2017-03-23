@@ -35,13 +35,13 @@ def msg_handler(sender_id, message_text):
            parsed_each_command[0] != "grayscale"  and \
            parsed_each_command[0] != "ellipse" :
             
-            send_message(sender_id, "unsupported command" + parsed_each_command[0])
+            send_message(sender_id, "unsupported command " + parsed_each_command[0])
             return
         
         if parsed_each_command[0] == "height" or \
            parsed_each_command[0] == "width":
             if len(parsed_each_command) < 2:
-                send_message(sender_id, "bill plays ball")
+                send_message(sender_id, parsed_each_command[0] + " expects 2 arguments")
                 return
             if parsed_each_command[1] is None or \
                parsed_each_command[1] == "":
@@ -65,7 +65,7 @@ def msg_handler(sender_id, message_text):
         if parsed_each_command[0] == "blur":
           
             if len(parsed_each_command) < 2:
-                send_message(sender_id, "bill plays ball")
+                send_message(sender_id, parsed_each_command[0] + " expects 2 arguments")
                 return
 
             if  parsed_each_command[1] == "":
