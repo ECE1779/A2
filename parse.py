@@ -40,7 +40,9 @@ def msg_handler(sender_id, message_text):
         
         if parsed_each_command[0] == "height" or \
            parsed_each_command[0] == "width":
-        
+            if len(parsed_each_command) < 2:
+                send_message(sender_id, "bill plays ball")
+                return
             if parsed_each_command[1] is None or \
                parsed_each_command[1] == "":
                 send_message(sender_id, parsed_each_command[0] + " expects 2 arguments")
@@ -53,7 +55,7 @@ def msg_handler(sender_id, message_text):
                 
             #check [1]'s number part is 1-100
             number_arg = parsed_each_command[1].split("%")[0]
-            if int(number_arg) < 1 or int(number_arg) > 100:
+            if float(number_arg) < 1 or float(number_arg) > 100:
                 send_message(sender_id, parsed_each_command[0] + "percentage must be between 1 to 100")
                 return
                 
