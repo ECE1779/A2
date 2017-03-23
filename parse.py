@@ -61,7 +61,11 @@ def msg_handler(sender_id, message_text):
             commands.update({parsed_each_command[0] : parsed_each_command[1]})
             
         if parsed_each_command[0] == "blur":
-            
+          
+            if len(parsed_each_command) < 2:
+                send_message(sender_id, "bill plays ball")
+                return
+
             if  parsed_each_command[1] == "":
                 send_message(sender_id, parsed_each_command[0] + " expects 2 arguments")
                 return
