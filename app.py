@@ -46,6 +46,7 @@ def webhook():
                         help_msg = """Type keywords to search images.\nAdd edit commands after your keyworkds to edit the image, separate by :\nsupported commands:\nheight [num]%\nwidth [num]%\nblur [num]\ngrayscale\nellipse\n\nps: using only one of height and width can only scale the image,\nif you want to crop the image please use both of them"""
                         
                         send_message(sender_id,help_msg)
+                        send_message(sender_id, "pps: ellipse cannot be used with grayscale and blur at the same time if the image size is large")
                         send_message(sender_id, "Use the following example to get started!")
                         send_message(sender_id, "catfish: height 30%: width 30%: blur 5: grayscale: ellipse")
                         return "ok", 200

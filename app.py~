@@ -41,9 +41,9 @@ def webhook():
 
                     sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
-                    message_text = messaging_event["message"]["text"]  # the message's text
+                    message_text = messaging_event["message"]["text"]  # the message's textd
                     if message_text == ":?":
-                        help_msg = """Type keywords to search images.\nAdd edit commands after your keyworkds to edit the image, separate by :\nsupported commands:\nheight [num]%\nwidth [num]%\nblur [num]\ngrayscale\nelipse\n\nps: using only one of height and width can only scale the image,\nif you want to crop the image please use both of them"""
+                        help_msg = """Type keywords to search images.\nAdd edit commands after your keyworkds to edit the image, separate by :\nsupported commands:\nheight [num]%\nwidth [num]%\nblur [num]\ngrayscale\nellipse\n\nps: using only one of height and width can only scale the image,\nif you want to crop the image please use both of them"""
                         
                         send_message(sender_id,help_msg)
                         send_message(sender_id, "Use the following example to get started!")
