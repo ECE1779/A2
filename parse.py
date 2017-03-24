@@ -50,7 +50,7 @@ def msg_handler(sender_id, message_text):
 
             #check if [1] is %
             if parsed_each_command[1].endswith("%") is False:
-                send_message(sender_id, parsed_each_command[0] + " can only take a percentile")
+                send_message(sender_id, parsed_each_command[0] + " can only take a percentage")
                 return
                 
             #check [1]'s number part is 1-100
@@ -106,7 +106,7 @@ def msg_handler(sender_id, message_text):
     #only search
     if not commands :
         print("send original search img")
-        send_message(sender_id, "Here's your picture of "+ topic)
+        send_message(sender_id, "Here's your image of "+ topic)
         send_image(sender_id, result_url)
         return
         
