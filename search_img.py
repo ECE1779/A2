@@ -44,7 +44,7 @@ def search_image_2(q, offset):
 """
 ####################################
 ########### Python 3.2 #############
-import http.client, urllib.request, urllib.parse, urllib.error, base64, json, os
+import httplib, urllib, base64, json, os
 
 
 def search_image_3(q, offset):
@@ -55,7 +55,7 @@ def search_image_3(q, offset):
         'Ocp-Apim-Subscription-Key':  os.environ["MS_TOKEN"],
     }
 
-    params = urllib.parse.urlencode({
+    params = urllib.urlencode({
         # Request parameters
         'q': q,
         'count': '1',
@@ -65,7 +65,7 @@ def search_image_3(q, offset):
     })
 
     try:
-        conn = http.client.HTTPSConnection('api.cognitive.microsoft.com')
+        conn = httplib.HTTPSConnection('api.cognitive.microsoft.com')
         conn.request("GET", "/bing/v5.0/images/search?%s" % params, "{body}", headers)
         response = conn.getresponse()
         data = response.read()

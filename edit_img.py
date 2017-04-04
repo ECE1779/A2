@@ -1,24 +1,22 @@
-import http.client, urllib.request, urllib.parse, urllib.error, base64, json
+import httplib, urllib, urllib.parse, urllib.error, base64, json
 import os
 import sys
 import json
 
 import requests
-from flask import Flask, request
 
-from send import *
 
 ########### ImageResizer ###########
 def upload_image(url):
     # https://api.imageresizer.io/images?key=key&url=https://upload.wikimedia.org/wikipedia/commons/6/65/Tesla_Model_S_Indoors.jpg
     # this should return an image url
-    params = urllib.parse.urlencode({
+    params = urllib.urlencode({
         'key':  os.environ["IMG_RESIZER_TOKEN"],
         'url': url,
     })
     #print("uploading image url is "+url)
     try:
-        conn = http.client.HTTPSConnection('api.imageresizer.io')
+        conn = httplib.HTTPSConnection('api.imageresizer.io')
         conn.request("GET", "/images?%s" % params)
         response = conn.getresponse()
         #print(response)
@@ -50,7 +48,7 @@ def get_image(img_id, command):
     
     #img_id
     #"?"
-    params = urllib.parse.urlencode(command)
+    params = urllib.urlencode(command)
 
     img_url = head + img_id + "?" + params
     return img_url
