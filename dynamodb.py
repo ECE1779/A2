@@ -12,24 +12,46 @@ table = dynamodb.Table('FB_Chatbot')
 
 
 def createNewUser(userID):
-
+    table.put_item(
+        Item={
+                'userid':userID,
+                'history':{}
+        }    
+)
 
 
 
 def appendTo(userID, keyword, url):
-
-
-
-
-
-def removeFrom(userID, keyword):
+    table.update_item(
+        Key={
+            'userid': userID
+        },
+        UpdateExpression = 'SET history.#k = :val',
+        ExpressionAttributeNames = {"#k": keyword},
+        ExpressionAttributeValues = {':val': {'S': url}}
+    )
+    
 
 
 
 
 def returnList(userID):
+    response = table.get_item(
+        Key={
+            'userid': userID
+        }   
+    )
+    print(response)
+    item = response['Item']
+    print(item)
+    return item
 
-
-
+def emptyList(userID):
+    table.put_item(
+        Item={
+                'userid':userID,
+                'history':{}
+        }    
+    )
 
 

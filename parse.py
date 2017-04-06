@@ -6,7 +6,14 @@ from send import *
 
 
 def msg_handler(sender_id, message_text):
-    
+    ###########
+    if message_text == 'list':
+        list = returnList(sender_id)
+        for item in list:
+            send_message()
+            send_image()
+        return
+    ###########
     parsed_command = message_text.split(":")
     print(parsed_command)
     if len(parsed_command) > 6:
@@ -98,11 +105,19 @@ def msg_handler(sender_id, message_text):
     #at here the commands should be ready
     print(commands)
     #search the actual img
-    result_url = search_image_3(topic, 0)
+    
+    #TODO finish the JSON parsing##########
+    url_list = returnList(sender_id)
+    for item in url_list:
+        if item['keyword'] == topic
+            result_url = item['url']
+    if not result_url: 
+        result_url = search_image_3(topic, 0)
     if result_url is None:
         send_message(sender_id, "Your image of " + topic + " cannot be found.")
         return
-        
+    #######################################
+    
     #only search
     if not commands :
         print("send original search img")

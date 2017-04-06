@@ -3,35 +3,33 @@ from __future__ import print_function
 import boto3
 import os
 import sys
-import uuid
-from PIL import Image
-import PIL.Image
+
      
-s3 = boto3.client('s3')
+s3 = boto3.resource('s3', aws_access_key_id=os.environ["ACCESS_KEY_ID"], aws_secret_access_key=os.environ["SECRET_ACCESS_KEY"])
   
-  
+  '''
+  import boto3
+s3 = boto3.resource('s3')
+s3.meta.client.upload_file('/tmp/hello.txt', 'mybucket', 'hello.txt')
+  '''
 def download_file(url, keyword):
 
     garbage, extension = os.path.splitext(url)
     print("Downloading new image")
     r = requests.get(url)
-    with open("/tmp/{}{}".format(keyword, extension), "wb") as code:
+    filepath = "/tmp/{}{}".format(keyword, extension) 
+    with open(filepath, "wb") as code:
         code.write(r.content)
+    return filepath, filename
+    
+    #s3.upload_fileobj(f1, "bucketforprj1", f1_filename)
 
 
-   
-def resize_image(image_path, resized_path):
-    with Image.open(image_path) as image:
-        image.thumbnail(tuple(x / 2 for x in image.size))
-        image.save(resized_path)
-     
-def handler(event, context):
-    for record in event['Records']:
-        bucket = record['s3']['bucket']['name']
-        key = record['s3']['object']['key'] 
-        download_path = '/tmp/{}{}'.format(uuid.uuid4(), key)
-        upload_path = '/tmp/resized-{}'.format(key)
-        
-        s3_client.download_file(bucket, key, download_path)
-        resize_image(download_path, upload_path)
-        s3_client.upload_file(upload_path, '{}resized'.format(bucket), key)
+
+def s3_handler(url, keyword):
+    filepath, filename = download_file(url, keyword)
+    
+    s3.meta.client.upload_file(filepath, 'bucketforprj2', filename)
+    
+    image_url = "https://s3.amazonaws.com/bucketforprj1/{}".format(filename)
+    return image_url
