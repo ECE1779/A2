@@ -1,4 +1,4 @@
-import httplib, urllib, urllib.parse, urllib.error, base64, json
+import httplib, urllib,  base64, json
 import os
 import sys
 import json

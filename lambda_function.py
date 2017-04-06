@@ -35,7 +35,17 @@ def lambda_handler(event, context):
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     message_text = messaging_event["message"]["text"]  # the message's text
                     
-                    send_message(sender_id,"Hello World! " + message_text)
+                    #send_message(sender_id,"Hello World! " + message_text)
+                    if message_text == ":?":
+                        help_msg = """Type keywords to search images.\nAdd edit commands after your keyworkds to edit the image, separate by :\nsupported commands:\nheight [num]%\nwidth [num]%\nblur [num]\ngrayscale\nellipse\n\nps: using only one of height and width can only scale the image,\nif you want to crop the image please use both of them"""
+                        
+                        send_message(sender_id,help_msg)
+                        send_message(sender_id, "pps: ellipse cannot be used with grayscale and blur at the same time if the image size is large")
+                        send_message(sender_id, "Use the following example to get started!")
+                        send_message(sender_id, "catfish: height 30%: width 30%: blur 5: grayscale: ellipse")
+                        return "ok", 200
+                    
+                    msg_handler(sender_id, message_text) 
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass
 
