@@ -78,7 +78,7 @@ def search_image_3(q, offset):
     #print(json_data)
 
     if json_data["value"][0]:
-        return json_data["value"][0]["contentUrl"]
+        return json_data["value"][0]["contentUrl"], json_data["value"][0]['encodingFormat']
     else:
         return None
 
