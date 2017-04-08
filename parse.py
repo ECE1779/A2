@@ -12,16 +12,19 @@ def msg_handler(sender_id, message_text):
     
     ###########
     check_exist = returnList(sender_id)
-    try:
-        check_exist['Item']
-    except:    
+    #print(check_exist)
+    if check_exist == None:   
         createNewUser(sender_id)     
+        print("new user created")
     ###########
     if message_text == 'list':
+        print("printing all histories")
         list = returnList(sender_id)
-        for item in list:
+        if  not list['history'] :
+            send_message(sender_id, 'You have not searched anything yet!')
+        for item in list['history']:
             send_message(sender_id, "Here's your history search of "+item)
-            send_image(sender_id, list[item])
+            send_image(sender_id, list['history'][item])
         return
     ###########
     if message_text == 'empty':
@@ -129,7 +132,7 @@ def msg_handler(sender_id, message_text):
         if item == topic:
             result_url = url_list[item]
             
-    if not result_url: 
+    if result_url == '': 
         result_url, extension = search_image_3(topic, 0)
         #upload result url
         print(result_url)
@@ -152,7 +155,7 @@ def msg_handler(sender_id, message_text):
     requested_img_id = ''
     print("uploading img")
     img_id_list = returnList(1234567890)
-    for item in imd_id_list:
+    for item in img_id_list['history']:
         if item == topic:
             requested_img_id = img_id_list[item]
     if not requested_img_id:
