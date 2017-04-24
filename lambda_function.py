@@ -9,7 +9,7 @@ from send import *
 print('Loading function')
 
 def lambda_handler(event, context):
-    #print("Received event: " + json.dumps(event, indent=2))
+    print("Received event: " + json.dumps(event, indent=2))
     print('got new request')
     if 'params' in event :
         #print(event['params']['querystring']['hub.verify_token'])

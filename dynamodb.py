@@ -44,7 +44,7 @@ def returnList(userID):
     )
     print(response)
     try:
-        item = response['Item']
+        item = response['Item']['history']
         print(item)
         return item
     except:

@@ -20,14 +20,14 @@ def msg_handler(sender_id, message_text):
     if message_text == 'list':
         print("printing all histories")
         list = returnList(sender_id)
-        if  not list['history'] :
+        if  not list :
             send_message(sender_id, 'You have not searched anything yet!')
-        for item in list['history']:
+        for item in list:
             send_message(sender_id, "Here's your history search of "+item)
-            send_image(sender_id, list['history'][item])
+            send_image(sender_id, list[item])
         return
     ###########
-    if message_text == 'empty':
+    if message_text == 'clear':
         emptyList(sender_id)
         send_message(sender_id, "History cleared")
         return
